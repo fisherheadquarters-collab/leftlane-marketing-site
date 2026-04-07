@@ -144,8 +144,8 @@ function Step6({ onSubmit, loading }: { onSubmit: (data: Record<string, string>)
         <input className={styles.input} id="phone" name="phone" type="tel" autoComplete="tel" />
       </div>
       <div className={styles.field}>
-        <label className={styles.fieldLabel} htmlFor="social">Instagram or TikTok Handle</label>
-        <input className={styles.input} id="social" name="social" type="text" placeholder="@yourhandle" />
+        <label className={styles.fieldLabel} htmlFor="website">Website URL</label>
+        <input className={styles.input} id="website" name="website" type="url" placeholder="https://yoursite.com" />
       </div>
       <button className={styles.submitBtn} type="submit" disabled={loading}>
         {loading ? 'Submitting...' : 'Submit Application'}
@@ -165,13 +165,8 @@ function Success() {
         hear from us within 2 business days with a calendar link to schedule your
         discovery call.
       </p>
-      <a
-        href="https://instagram.com/leftlanemarketing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.igLink}
-      >
-        Follow us on Instagram
+      <a href="/blog" className={styles.resourcesBtn}>
+        Explore Giveaway Resources
       </a>
     </div>
   );

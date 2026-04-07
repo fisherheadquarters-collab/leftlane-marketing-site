@@ -340,22 +340,23 @@
   margin-bottom: 24px;
 }
 
-.igLink {
+.resourcesBtn {
   display: inline-block;
+  background-color: #FCB402;
+  color: #000000;
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 600;
-  color: #FCB402;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(252, 180, 2, 0.3);
-  padding-bottom: 2px;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  padding: 16px 32px;
+  border-radius: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.igLink:hover {
-  color: #e5a200;
-  border-color: #e5a200;
+.resourcesBtn:hover {
+  background-color: #e5a200;
+  transform: translateY(-1px);
 }
 
 /* ============================================================
