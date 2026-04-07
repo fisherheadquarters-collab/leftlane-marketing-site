@@ -1,0 +1,390 @@
+/* ============================================================
+   Page shell
+   ============================================================ */
+.page {
+  min-height: 100vh;
+  background-color: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 72px;
+  background-color: #0A0A0A;
+  border-bottom: 1px solid #222222;
+}
+
+.navLogoLink {
+  display: flex;
+  align-items: center;
+}
+
+.navBack {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: #888888;
+  letter-spacing: 0.04em;
+  transition: color 0.15s ease;
+}
+
+.navBack:hover {
+  color: #ffffff;
+}
+
+/* ============================================================
+   Progress bar
+   ============================================================ */
+.progressTrack {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  height: 3px;
+  background-color: #1A1A1A;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #FCB402;
+  transition: width 0.4s ease;
+}
+
+/* ============================================================
+   Main / step layout
+   ============================================================ */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 32px 80px;
+}
+
+.stepWrap {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ============================================================
+   Step header
+   ============================================================ */
+.stepLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FCB402;
+}
+
+.stepQuestion {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.0;
+}
+
+/* ============================================================
+   Option cards (icon + label + desc) — Steps 1, 5
+   ============================================================ */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.optionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #111111;
+  border: 1px solid #333333;
+  padding: 24px;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.15s ease;
+  border-radius: 0;
+}
+
+.optionCard:hover {
+  border-color: #FCB402;
+  background-color: rgba(252, 180, 2, 0.06);
+  transform: translateY(-2px);
+}
+
+.cardIcon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.cardLabel {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   List cards (text only) — Steps 2, 3, 4
+   ============================================================ */
+.listGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #111111;
+  border: 1px solid #333333;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.12s ease;
+  border-radius: 0;
+  width: 100%;
+}
+
+.listCard:hover {
+  border-color: #FCB402;
+  background-color: rgba(252, 180, 2, 0.06);
+  transform: translateX(4px);
+}
+
+.listIcon {
+  font-size: 20px;
+}
+
+/* ============================================================
+   Step 6 — Contact form
+   ============================================================ */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.input {
+  background-color: #111111;
+  border: 1px solid #333333;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 16px;
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: #444444;
+}
+
+.input:focus {
+  border-color: #FCB402;
+}
+
+.submitBtn {
+  width: 100%;
+  background-color: #FCB402;
+  color: #000000;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 20px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  margin-top: 8px;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #e5a200;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(252, 180, 2, 0.25);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   Back button
+   ============================================================ */
+.backBtn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #888888;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+  margin-top: 8px;
+}
+
+.backBtn:hover {
+  color: #ffffff;
+}
+
+/* ============================================================
+   Success screen
+   ============================================================ */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: calc(100vh - 72px);
+}
+
+.successCheck {
+  font-size: 96px;
+  color: #FCB402;
+  line-height: 1;
+  margin-bottom: 32px;
+  font-family: var(--font-display);
+}
+
+.successHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 88px);
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.0;
+  margin-bottom: 24px;
+}
+
+.successBody {
+  font-size: 18px;
+  color: #888888;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.igLink {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #FCB402;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(252, 180, 2, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.igLink:hover {
+  color: #e5a200;
+  border-color: #e5a200;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 640px) {
+  .nav {
+    padding: 0 16px;
+  }
+
+  .main {
+    padding: 40px 16px 60px;
+    align-items: flex-start;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .stepQuestion {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .listCard {
+    font-size: 20px;
+    padding: 18px 20px;
+  }
+}
