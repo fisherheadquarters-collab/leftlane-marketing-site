@@ -3,6 +3,17 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 const TOTAL_STEPS = 6;
 
 type Selections = {
@@ -110,13 +121,43 @@ function Step5({ onSelect }: { onSelect: (v: string) => void }) {
 }
 
 /* ── Step 6 ─────────────────────────────────────────────── */
-function Step6({ onSubmit, loading }: { onSubmit: (data: Record<string, string>) => void; loading: boolean }) {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+type FieldErrors = Partial<Record<'firstName' | 'lastName' | 'brandName' | 'email' | 'phone' | 'website', string>>;
+
+function Step6({ onSubmit, loading, error }: { onSubmit: (data: Record<string, string>) => Promise<void>; loading: boolean; error: string }) {
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+
+  function clearError(name: keyof FieldErrors) {
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => { const next = { ...prev }; delete next[name]; return next; });
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data: Record<string, string> = {};
-    fd.forEach((v, k) => { data[k] = v.toString(); });
-    onSubmit(data);
+    fd.forEach((v, k) => { data[k] = v.toString().trim(); });
+
+    // Validate
+    const errors: FieldErrors = {};
+    const required: (keyof FieldErrors)[] = ['firstName', 'lastName', 'brandName', 'email', 'phone', 'website'];
+    for (const key of required) {
+      if (!data[key]) errors[key] = 'This field is required';
+    }
+    if (!errors.email && data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    await onSubmit(data);
+  }
+
+  function inputClass(name: keyof FieldErrors) {
+    return `${styles.input}${fieldErrors[name] ? ` ${styles.inputError}` : ''}`;
   }
 
   return (
@@ -124,32 +165,45 @@ function Step6({ onSubmit, loading }: { onSubmit: (data: Record<string, string>)
       <div className={styles.fieldRow}>
         <div className={styles.field}>
           <label className={styles.fieldLabel} htmlFor="firstName">First Name</label>
-          <input className={styles.input} id="firstName" name="firstName" type="text" required autoComplete="given-name" />
+          <input className={inputClass('firstName')} id="firstName" name="firstName" type="text" autoComplete="given-name"
+            onChange={() => clearError('firstName')} />
+          {fieldErrors.firstName && <span className={styles.fieldError}>{fieldErrors.firstName}</span>}
         </div>
         <div className={styles.field}>
           <label className={styles.fieldLabel} htmlFor="lastName">Last Name</label>
-          <input className={styles.input} id="lastName" name="lastName" type="text" required autoComplete="family-name" />
+          <input className={inputClass('lastName')} id="lastName" name="lastName" type="text" autoComplete="family-name"
+            onChange={() => clearError('lastName')} />
+          {fieldErrors.lastName && <span className={styles.fieldError}>{fieldErrors.lastName}</span>}
         </div>
       </div>
       <div className={styles.field}>
         <label className={styles.fieldLabel} htmlFor="brandName">Business / Brand Name</label>
-        <input className={styles.input} id="brandName" name="brandName" type="text" required />
+        <input className={inputClass('brandName')} id="brandName" name="brandName" type="text"
+          onChange={() => clearError('brandName')} />
+        {fieldErrors.brandName && <span className={styles.fieldError}>{fieldErrors.brandName}</span>}
       </div>
       <div className={styles.field}>
         <label className={styles.fieldLabel} htmlFor="email">Email Address</label>
-        <input className={styles.input} id="email" name="email" type="email" required autoComplete="email" />
+        <input className={inputClass('email')} id="email" name="email" type="email" autoComplete="email"
+          onChange={() => clearError('email')} />
+        {fieldErrors.email && <span className={styles.fieldError}>{fieldErrors.email}</span>}
       </div>
       <div className={styles.field}>
         <label className={styles.fieldLabel} htmlFor="phone">Phone Number</label>
-        <input className={styles.input} id="phone" name="phone" type="tel" autoComplete="tel" />
+        <input className={inputClass('phone')} id="phone" name="phone" type="tel" autoComplete="tel"
+          onChange={() => clearError('phone')} />
+        {fieldErrors.phone && <span className={styles.fieldError}>{fieldErrors.phone}</span>}
       </div>
       <div className={styles.field}>
         <label className={styles.fieldLabel} htmlFor="website">Website URL</label>
-        <input className={styles.input} id="website" name="website" type="url" placeholder="https://yoursite.com" />
+        <input className={inputClass('website')} id="website" name="website" type="url" placeholder="https://yoursite.com"
+          onChange={() => clearError('website')} />
+        {fieldErrors.website && <span className={styles.fieldError}>{fieldErrors.website}</span>}
       </div>
       <button className={styles.submitBtn} type="submit" disabled={loading}>
         {loading ? 'Submitting...' : 'Submit Application'}
       </button>
+      {error && <p className={styles.submitError}>{error}</p>}
     </form>
   );
 }
@@ -187,6 +241,7 @@ export default function ApplyFunnel() {
   const [selections, setSelections] = useState<Selections>(emptySelections);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   function advance() {
     setStep((s) => Math.min(s + 1, TOTAL_STEPS));
@@ -201,13 +256,52 @@ export default function ApplyFunnel() {
     advance();
   }
 
-  async function handleSubmit(contactData: Record<string, string>) {
+  async function handleSubmit(contactData: Record<string, string>): Promise<void> {
     setLoading(true);
-    // Placeholder — wire to /api/contact when Resend is configured
-    await new Promise((r) => setTimeout(r, 900));
-    console.log('Application submitted:', { ...selections, ...contactData });
-    setLoading(false);
-    setSubmitted(true);
+    setSubmitError('');
+
+    try {
+      // Get reCAPTCHA token
+      const token = await new Promise<string>((resolve, reject) => {
+        window.grecaptcha.ready(async () => {
+          try {
+            const t = await window.grecaptcha.execute(SITE_KEY, { action: 'apply_submit' });
+            resolve(t);
+          } catch (e) {
+            reject(e);
+          }
+        });
+      });
+
+      console.log('reCAPTCHA token obtained, submitting...');
+
+      // Submit to API
+      const response = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...selections,
+          ...contactData,
+          recaptchaToken: token,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('Apply API response:', response.status, JSON.stringify(data));
+
+      if (!data.success) {
+        throw new Error(data.error || 'Submission failed');
+      }
+
+      // Only reach here on confirmed success
+      setSubmitted(true);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error('Funnel submit error:', msg);
+      setSubmitError('Something went wrong. Please try again or email us directly at Alex@leftlanemarketingllc.com');
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -240,7 +334,7 @@ export default function ApplyFunnel() {
           {step === 3 && <Step3 onSelect={(v) => select('following', v)} />}
           {step === 4 && <Step4 onSelect={(v) => select('experience', v)} />}
           {step === 5 && <Step5 onSelect={(v) => select('goal', v)} />}
-          {step === 6 && <Step6 onSubmit={handleSubmit} loading={loading} />}
+          {step === 6 && <Step6 onSubmit={handleSubmit} loading={loading} error={submitError} />}
 
           {step > 1 && (
             <button className={styles.backBtn} onClick={back} type="button">
