@@ -12,11 +12,9 @@ function Nav() {
           style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
         />
       </a>
-      <div className={styles.navLinks}>
-        <a href="/results" className={styles.navLink}>Results</a>
-        <a href="/blog" className={styles.navLink}>Blog</a>
-        <a href="/apply" className={styles.navCta}>Apply to Work With Us</a>
-      </div>
+      <a href="/apply" className={styles.navCta}>
+        Apply to Work With Us
+      </a>
     </nav>
   );
 }
