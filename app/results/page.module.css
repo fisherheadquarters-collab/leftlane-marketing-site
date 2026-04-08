@@ -1,5 +1,5 @@
 /* ============================================================
-   Shared Utilities
+   Shared
    ============================================================ */
 .container {
   width: 100%;
@@ -8,7 +8,6 @@
   padding: 0 var(--space-md);
 }
 
-/* Section label with gold accent bar */
 .label {
   display: flex;
   align-items: center;
@@ -31,10 +30,6 @@
   flex-shrink: 0;
 }
 
-.accent {
-  color: var(--color-accent);
-}
-
 .sectionH2 {
   font-family: var(--font-display);
   font-size: var(--text-h2);
@@ -52,7 +47,6 @@
   margin-bottom: var(--space-lg);
 }
 
-/* ── Buttons ─────────────────────────────────────────────── */
 .btnPrimary {
   display: inline-block;
   background-color: var(--color-accent);
@@ -64,11 +58,7 @@
   text-transform: uppercase;
   padding: 18px 40px;
   border-radius: 2px;
-  box-shadow: 0 0 0 0 rgba(252, 180, 2, 0);
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
 }
 
@@ -132,10 +122,7 @@
   text-transform: uppercase;
   padding: 12px 24px;
   border-radius: 2px;
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .navCta:hover {
@@ -148,29 +135,19 @@
    Hero
    ============================================================ */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 72px;
   background-color: var(--color-bg);
-}
-
-.heroInner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .heroHeadline {
   font-family: var(--font-display);
-  font-size: var(--text-hero);
+  font-size: var(--text-h1);
   color: var(--color-white);
   text-transform: uppercase;
   line-height: 0.97;
   letter-spacing: 0.01em;
   margin-bottom: var(--space-md);
-  max-width: 1100px;
 }
 
 .heroSub {
@@ -181,32 +158,62 @@
   margin-bottom: var(--space-lg);
 }
 
-/* Stat Strip */
-.statStrip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
+.trustStrip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
 }
 
-.stat {
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trustValue {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.5vw, 48px);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.trustLabel {
+  font-size: var(--text-small);
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   Stats Bar
+   ============================================================ */
+.statsBar {
+  background-color: var(--color-bg-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.statsBarInner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.statItem {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-left: var(--space-sm);
-  border-left: 2px solid var(--color-border);
-  transition: border-color 0.2s ease;
+  padding: var(--space-lg) var(--space-md);
+  border-right: 1px solid var(--color-border);
 }
 
-.stat:hover {
-  border-left-color: var(--color-accent);
+.statItem:last-child {
+  border-right: none;
 }
 
 .statValue {
   font-family: var(--font-display);
-  font-size: clamp(44px, 4.5vw, 64px);
+  font-size: clamp(44px, 4.5vw, 72px);
   color: var(--color-accent);
   line-height: 1;
 }
@@ -214,136 +221,102 @@
 .statLabel {
   font-size: var(--text-small);
   color: #888888;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   line-height: 1.4;
 }
 
 /* ============================================================
-   The Problem
+   Case Studies
    ============================================================ */
-.problem {
-  background-color: var(--color-bg-2);
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
-}
-
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-}
-
-.card {
-  background-color: var(--color-bg-3);
-  border: 1px solid var(--color-border);
-  border-top: 2px solid transparent;
-  padding: var(--space-md);
-  transition:
-    border-top-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.card:hover {
-  border-top-color: var(--color-accent);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-.cardTitle {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  color: var(--color-accent);
-  text-transform: uppercase;
-  margin-bottom: var(--space-sm);
-}
-
-.cardBody {
-  font-size: 15px;
-  color: var(--color-gray-2);
-  line-height: 1.7;
-}
-
-/* ============================================================
-   Giveaway Growth Engine
-   ============================================================ */
-.engine {
+.caseStudies {
   background-color: var(--color-bg);
   padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.serviceGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.caseGrid {
+  display: flex;
+  flex-direction: column;
   gap: 1px;
   background-color: var(--color-border);
   border: 1px solid var(--color-border);
 }
 
-.serviceTile {
+.caseCard {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-lg);
+  align-items: center;
   background-color: var(--color-bg-2);
-  padding: var(--space-md) var(--space-md) var(--space-lg);
-  border-left: 3px solid transparent;
-  transition:
-    background-color 0.2s ease,
-    border-left-color 0.2s ease;
+  padding: var(--space-lg) var(--space-md);
+  transition: background-color 0.2s ease;
 }
 
-.serviceTile:hover {
+.caseCard:hover {
   background-color: var(--color-bg-3);
-  border-left-color: var(--color-accent);
 }
 
-.serviceTileTitle {
+.caseLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.caseResult {
   font-family: var(--font-display);
-  font-size: 24px;
-  color: var(--color-white);
+  font-size: clamp(48px, 5vw, 80px);
+  color: var(--color-accent);
+  line-height: 1;
   text-transform: uppercase;
-  margin-bottom: var(--space-sm);
 }
 
-.serviceTileBody {
-  font-size: 14px;
+.caseFrom {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 26px);
   color: var(--color-gray-2);
-  line-height: 1.7;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.caseLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-top: 4px;
+}
+
+.caseDesc {
+  font-size: 16px;
+  color: var(--color-gray-2);
+  line-height: 1.75;
+  max-width: 520px;
 }
 
 /* ============================================================
-   Who It's For
+   Why It Works
    ============================================================ */
-.whoItsFor {
+.whyItWorks {
   background-color: var(--color-bg-2);
   padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.clientGrid {
+.whyGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
 }
 
-.clientCard {
-  background-color: var(--color-bg-3);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-accent);
-  padding: var(--space-md);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+.whyCard {
+  border-top: 2px solid var(--color-accent);
+  padding-top: var(--space-md);
 }
 
-.clientCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  border-color: var(--color-gray-3);
-  border-top-color: var(--color-accent);
-}
-
-.clientCardTitle {
+.whyTitle {
   font-family: var(--font-display);
   font-size: var(--text-h3);
   color: var(--color-white);
@@ -351,68 +324,41 @@
   margin-bottom: var(--space-sm);
 }
 
-.clientCardBody {
+.whyBody {
   font-size: 15px;
   color: var(--color-gray-2);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ============================================================
-   Results
+   Meta Partner
    ============================================================ */
-.results {
+.metaPartner {
   background-color: var(--color-bg);
   padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
 }
 
-.resultsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-}
-
-.resultCard {
+.metaPartner .container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: var(--space-lg) var(--space-md);
-  background-color: var(--color-bg-2);
-  border: 1px solid var(--color-border);
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  align-items: center;
 }
 
-.resultCard:hover {
-  border-color: var(--color-gray-3);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+.metaPartner .label {
+  justify-content: center;
 }
 
-.resultValue {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.5vw, 68px);
-  color: var(--color-accent);
-  line-height: 1;
-  text-transform: uppercase;
+.metaPartner .label::before {
+  display: none;
 }
 
-.resultSub {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 2vw, 30px);
+.metaBody {
+  font-size: 18px;
   color: var(--color-gray-2);
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.resultLabel {
-  font-size: var(--text-small);
-  color: var(--color-gray-2);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
+  line-height: 1.75;
+  max-width: 560px;
 }
 
 /* ============================================================
@@ -426,7 +372,11 @@
   text-align: center;
 }
 
-.finalCta .container {
+.ctaContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -456,7 +406,7 @@
 .footer {
   background-color: var(--color-bg);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-md) var(--space-md);
+  padding: var(--space-md);
   min-height: 72px;
   display: flex;
   align-items: center;
@@ -496,46 +446,30 @@
    Responsive
    ============================================================ */
 @media (max-width: 900px) {
-  .cardGrid,
-  .serviceGrid,
-  .clientGrid,
-  .resultsGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .statStrip {
+  .statsBarInner {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .serviceTile {
-    border-left-width: 0;
-    border-top: 3px solid transparent;
+  .statItem {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .serviceTile:hover {
-    border-left-color: transparent;
-    border-top-color: var(--color-accent);
+  .statItem:nth-child(odd) {
+    border-right: 1px solid var(--color-border);
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .caseCard {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
   }
 }
 
-@media (max-width: 600px) {
-  .heroInner {
-    padding-bottom: var(--space-xl);
-  }
-
-  .heroHeadline {
-    font-size: clamp(52px, 13vw, 80px);
-  }
-
-  .heroSub {
-    font-size: 17px;
-  }
-
-  .statStrip {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-sm);
-  }
-
+@media (max-width: 640px) {
   .nav {
     padding: 0 var(--space-sm);
   }
@@ -550,7 +484,15 @@
 
   .navCta {
     font-size: 11px;
-    padding: 10px 16px;
+    padding: 10px 14px;
+  }
+
+  .trustStrip {
+    gap: var(--space-md);
+  }
+
+  .statsBarInner {
+    grid-template-columns: 1fr 1fr;
   }
 
   .footer {
@@ -559,6 +501,6 @@
   }
 
   .ctaH2 {
-    font-size: clamp(40px, 10vw, 64px);
+    font-size: clamp(36px, 9vw, 56px);
   }
 }
