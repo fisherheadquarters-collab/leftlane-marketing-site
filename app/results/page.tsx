@@ -4,7 +4,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Client Results | LeftLane Marketing Giveaway Growth',
   description:
-    'See real client results from LeftLane Marketing. $250M generated in 2025, 400+ giveaways fulfilled, zero clients lost. Apply to work with the industry leader.',
+    'Real results from real LeftLane Marketing clients. See how brands scaled from $240K to $4.65M, tripled revenue, and generated $250M+ using giveaway marketing.',
 };
 
 /* ── Nav ─────────────────────────────────────────────────── */

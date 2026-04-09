@@ -6,7 +6,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Giveaway Marketing Blog | LeftLane Marketing',
   description:
-    "Expert giveaway marketing strategy from the team that's run 400+ vehicle giveaways and generated $250M for clients. Learn how to run profitable sweepstakes.",
+    "The LeftLane Marketing blog. Strategy, insights, and data from 400+ vehicle giveaway campaigns.",
 };
 
 function Nav() {
