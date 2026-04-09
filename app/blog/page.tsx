@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Giveaway Marketing Blog | LeftLane Marketing',
   description:
     "The LeftLane Marketing blog. Strategy, insights, and data from 400+ vehicle giveaway campaigns.",
+  openGraph: {
+    title: 'Giveaway Marketing Blog | LeftLane Marketing',
+    description:
+      "The LeftLane Marketing blog. Strategy, insights, and data from 400+ vehicle giveaway campaigns.",
+  },
 };
 
 function Nav() {
@@ -20,9 +25,12 @@ function Nav() {
           style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
         />
       </a>
-      <a href="/apply" className={styles.navCta}>
-        Apply to Work With Us
-      </a>
+      <div className={styles.navLinks}>
+        <a href="/results" className={styles.navLink}>Results</a>
+        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
+        <a href="/blog" className={styles.navLink}>Blog</a>
+        <a href="/apply" className={styles.navCta}>Apply</a>
+      </div>
     </nav>
   );
 }

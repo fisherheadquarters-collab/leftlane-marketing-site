@@ -21,6 +21,26 @@ export const metadata: Metadata = {
   title: "LeftLane Marketing — The Giveaway Growth Engine",
   description:
     "LeftLane Marketing is the industry's most proven giveaway growth consultancy. $250M+ generated. 400+ giveaways. Zero clients lost.",
+  openGraph: {
+    title: "LeftLane Marketing — The Giveaway Growth Engine",
+    description:
+      "The industry's leading vehicle giveaway consultancy. $250M+ generated. 400+ giveaways. 0 clients lost.",
+    url: "https://leftlanemarketingllc.com",
+    type: "website",
+    siteName: "LeftLane Marketing",
+    images: [
+      {
+        url: "https://leftlanemarketingllc.com/images/leftlane-logo.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LeftLane Marketing — The Giveaway Growth Engine",
+    description:
+      "The industry's leading vehicle giveaway consultancy. $250M+ generated. 400+ giveaways. 0 clients lost.",
+    images: ["https://leftlanemarketingllc.com/images/leftlane-logo.png"],
+  },
 };
 
 export default function RootLayout({

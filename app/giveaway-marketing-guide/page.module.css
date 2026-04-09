@@ -21,6 +21,26 @@
   align-items: center;
 }
 
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-gray-2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+}
+
+.navLink:hover {
+  color: var(--color-white);
+}
+
 .navCta {
   display: inline-block;
   background-color: var(--color-accent);
@@ -688,6 +708,10 @@
 @media (max-width: 600px) {
   .nav {
     padding: 0 16px;
+  }
+
+  .navLink {
+    display: none;
   }
 
   .navCta {

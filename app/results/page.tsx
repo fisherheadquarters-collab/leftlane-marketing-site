@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: 'Client Results | LeftLane Marketing Giveaway Growth',
   description:
     'Real results from real LeftLane Marketing clients. See how brands scaled from $240K to $4.65M, tripled revenue, and generated $250M+ using giveaway marketing.',
+  openGraph: {
+    title: 'Client Results | LeftLane Marketing',
+    description:
+      'Real results from real LeftLane Marketing clients. See how brands scaled from $240K to $4.65M, tripled revenue, and generated $250M+ using giveaway marketing.',
+  },
 };
 
 /* ── Nav ─────────────────────────────────────────────────── */
@@ -21,8 +26,9 @@ function Nav() {
       </a>
       <div className={styles.navLinks}>
         <a href="/results" className={styles.navLink}>Results</a>
+        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
         <a href="/blog" className={styles.navLink}>Blog</a>
-        <a href="/apply" className={styles.navCta}>Apply to Work With Us</a>
+        <a href="/apply" className={styles.navCta}>Apply</a>
       </div>
     </nav>
   );

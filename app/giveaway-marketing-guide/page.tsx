@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: 'Giveaway Marketing Guide: How to Run a Vehicle Giveaway | LeftLane Marketing',
   description:
     "Learn how to run a profitable vehicle giveaway with LeftLane Marketing's complete guide. 400+ giveaways. $250M+ generated. See if you qualify.",
+  openGraph: {
+    title: 'Giveaway Marketing Guide | LeftLane Marketing',
+    description:
+      "Learn how to run a profitable vehicle giveaway with LeftLane Marketing's complete guide. 400+ giveaways. $250M+ generated. See if you qualify.",
+  },
 };
 
 const faqs = [
@@ -49,9 +54,12 @@ function Nav() {
           style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
         />
       </a>
-      <a href="/apply" className={styles.navCta}>
-        Apply to Work With Us
-      </a>
+      <div className={styles.navLinks}>
+        <a href="/results" className={styles.navLink}>Results</a>
+        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
+        <a href="/blog" className={styles.navLink}>Blog</a>
+        <a href="/apply" className={styles.navCta}>Apply</a>
+      </div>
     </nav>
   );
 }
