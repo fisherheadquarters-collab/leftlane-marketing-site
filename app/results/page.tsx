@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Nav from '@/components/Nav/Nav';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -11,28 +12,6 @@ export const metadata: Metadata = {
       'Real results from real LeftLane Marketing clients. See how brands scaled from $240K to $4.65M, tripled revenue, and generated $250M+ using giveaway marketing.',
   },
 };
-
-/* ── Nav ─────────────────────────────────────────────────── */
-function Nav() {
-  return (
-    <nav className={styles.nav}>
-      <a href="/" className={styles.navLogoLink}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/leftlane-logo.png"
-          alt="LeftLane Marketing"
-          style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
-        />
-      </a>
-      <div className={styles.navLinks}>
-        <a href="/results" className={styles.navLink}>Results</a>
-        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
-        <a href="/blog" className={styles.navLink}>Blog</a>
-        <a href="/apply" className={styles.navCta}>Apply</a>
-      </div>
-    </nav>
-  );
-}
 
 /* ── Hero ────────────────────────────────────────────────── */
 function Hero() {
@@ -224,6 +203,7 @@ function Footer() {
       <nav className={styles.footerNav}>
         <a href="/apply">Apply</a>
         <a href="/results">Results</a>
+        <a href="/giveaway-marketing-guide">Free Guide</a>
         <a href="/blog">Blog</a>
       </nav>
       <span className={styles.footerCopy}>

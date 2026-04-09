@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Nav from '@/components/Nav/Nav';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -42,27 +43,6 @@ const faqs = [
     a: 'Submit an application through our Apply page. We review every application personally and respond within 2 business days. If you are a fit, we will schedule a discovery call to learn about your brand, your goals, and whether the giveaway model makes sense for your business. We are selective about who we work with because our reputation depends on every client succeeding.',
   },
 ];
-
-function Nav() {
-  return (
-    <nav className={styles.nav}>
-      <a href="/" className={styles.navLogoLink}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/leftlane-logo.png"
-          alt="LeftLane Marketing"
-          style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
-        />
-      </a>
-      <div className={styles.navLinks}>
-        <a href="/results" className={styles.navLink}>Results</a>
-        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
-        <a href="/blog" className={styles.navLink}>Blog</a>
-        <a href="/apply" className={styles.navCta}>Apply</a>
-      </div>
-    </nav>
-  );
-}
 
 export default function GiveawayMarketingGuide() {
   const faqSchema = {
@@ -431,6 +411,7 @@ export default function GiveawayMarketingGuide() {
         <nav className={styles.footerNav}>
           <a href="/apply">Apply</a>
           <a href="/results">Results</a>
+          <a href="/giveaway-marketing-guide">Free Guide</a>
           <a href="/blog">Blog</a>
         </nav>
         <span className={styles.footerCopy}>

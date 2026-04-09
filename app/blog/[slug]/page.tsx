@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Nav from '@/components/Nav/Nav';
 import { blogPosts } from '@/lib/blog-posts';
 import styles from './page.module.css';
 
@@ -53,27 +54,6 @@ function renderContent(content: string) {
   }
 
   return elements;
-}
-
-function Nav() {
-  return (
-    <nav className={styles.nav}>
-      <a href="/" className={styles.navLogoLink}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/leftlane-logo.png"
-          alt="LeftLane Marketing"
-          style={{ height: '44px', width: 'auto', mixBlendMode: 'screen' }}
-        />
-      </a>
-      <div className={styles.navLinks}>
-        <a href="/results" className={styles.navLink}>Results</a>
-        <a href="/giveaway-marketing-guide" className={styles.navLink}>Free Guide</a>
-        <a href="/blog" className={styles.navLink}>Blog</a>
-        <a href="/apply" className={styles.navCta}>Apply</a>
-      </div>
-    </nav>
-  );
 }
 
 export default async function BlogPost({ params }: Props) {
@@ -221,6 +201,7 @@ export default async function BlogPost({ params }: Props) {
         <nav className={styles.footerNav}>
           <a href="/apply">Apply</a>
           <a href="/results">Results</a>
+          <a href="/giveaway-marketing-guide">Free Guide</a>
           <a href="/blog">Blog</a>
         </nav>
         <span className={styles.footerCopy}>
