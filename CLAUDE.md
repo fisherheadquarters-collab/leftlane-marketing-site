@@ -9,7 +9,7 @@ SEO — should be consistent with what is documented here.
 ## 1. Company Overview
 
 **Company:** LeftLane Marketing LLC
-**Website:** leftlanemarketingllc.com
+**Website:** https://leftlanemarketingllc.com (live, deployed on Vercel)
 **Location:** Charleston, SC
 **Market:** USA and Canada
 **Founded:** ~2015 (10 years in business)
