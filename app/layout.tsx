@@ -32,6 +32,42 @@ export default function RootLayout({
     <html lang="en" className={`${bebasNeue.variable} ${dmSans.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "LeftLane Marketing LLC",
+              "url": "https://leftlanemarketingllc.com",
+              "logo": "https://leftlanemarketingllc.com/images/leftlane-logo.png",
+              "description": "The industry's leading vehicle giveaway marketing consultancy. $250M+ generated for clients across 400+ giveaways.",
+              "foundingDate": "2015",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "addressCountry": "US"
+              },
+              "areaServed": ["US", "CA"],
+              "knowsAbout": ["giveaway marketing", "vehicle giveaways", "sweepstakes marketing", "automotive marketing"],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Giveaway Growth Engine",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Giveaway Growth Engine",
+                      "description": "Fully turnkey vehicle giveaway system including strategy, ads, fulfillment, and winner delivery."
+                    }
+                  }
+                ]
+              }
+            }),
+          }}
+        />
       </head>
       <body>
         {children}

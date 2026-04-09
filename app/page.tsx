@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "LeftLane Marketing — The Giveaway Growth Engine | Vehicle Giveaway Agency",
+  description:
+    "LeftLane Marketing is the industry leader in vehicle giveaway marketing. 400+ giveaways. $250M+ generated. Zero clients lost. Apply to work with us.",
+};
 
 /* ── Nav ─────────────────────────────────────────────────── */
 function Nav() {
